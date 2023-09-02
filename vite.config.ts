@@ -7,8 +7,13 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Component from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetIcons, presetUno } from 'unocss'
-import transformerDirective from '@unocss/transformer-directives'
+import {
+  presetAttributify,
+  presetIcons,
+  presetUno,
+  transformerDirectives,
+  transformerVariantGroup
+} from 'unocss'
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -20,38 +25,32 @@ export default defineConfig({
     vueJsx(),
     Component({
       dirs: ['src/components', 'src/**/components'],
-      dts: path.resolve(pathSrc, 'typings/component.d.ts'),
+      dts: path.resolve(pathSrc, 'typings/component.d.ts')
     }),
     AutoImport({
       imports: ['vue', 'vue-router', '@vueuse/core'],
       dirs: [path.resolve(pathSrc, 'composable')],
-      dts: path.resolve(pathSrc, 'typings/component.d.ts'),
+      dts: path.resolve(pathSrc, 'typings/component.d.ts')
     }),
     Unocss({
-      presets: [presetUno(), presetAttributify(), presetIcons()],
-      transformers: [transformerDirective()],
+      presets: [
+        presetUno(),
+        presetAttributify(),
+        presetIcons({
+          scale: 1.2,
+          warn: true
+        })
+      ],
+      transformers: [transformerDirectives(), transformerVariantGroup()],
       shortcuts: {
         'flex-center': 'flex justify-center items-center',
-        'flex-center-col': 'flex flex-col justify-center items-center',
-      },
-      theme: {
-        colors: {
-          main: 'var(--bg)',
-          primary: 'var(--primary-color)',
-          tips: 'var(--tips-color)',
-          warning: 'var(--warn-color)',
-          card: {
-            main: 'var(--card-main)',
-          },
-          page: 'var(--page-color)',
-          test: 'var(--test)',
-        },
-      },
-    }),
+        'flex-center-col': 'flex flex-col justify-center items-center'
+      }
+    })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
 })
