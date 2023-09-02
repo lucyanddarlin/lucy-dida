@@ -6,6 +6,7 @@ import './assets/main.scss'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
 import router from './router'
+import './style/override.css'
 ;(function setupApp() {
   const app = createApp(App).use(createPinia())
   app.use(router)
