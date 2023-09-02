@@ -1,13 +1,14 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@iconify-json/carbon': ^1.1.9
+  '@ant-design/colors': ^7.0.0
+  '@iconify-json/carbon': ^1.1.20
+  '@iconify-json/mdi': ^1.1.54
   '@rushstack/eslint-patch': ^1.1.4
   '@sxzz/eslint-config': ^2.4.4
   '@types/node': ^18.11.9
   '@types/qs': ^6.9.7
   '@unocss/reset': ^0.46.5
-  '@unocss/transformer-directives': ^0.46.5
   '@vitejs/plugin-vue': ^3.0.3
   '@vitejs/plugin-vue-jsx': ^2.0.1
   '@vue/eslint-config-prettier': ^7.0.0
@@ -36,6 +37,8 @@ specifiers:
   vue-tsc: ^0.40.7
 
 dependencies:
+  '@ant-design/colors': 7.0.0
+  '@iconify-json/mdi': 1.1.54
   '@vue/typescript': 1.8.8_typescript@4.7.4
   axios: 1.5.0
   naive-ui: 2.34.4_vue@3.3.4
@@ -51,7 +54,6 @@ devDependencies:
   '@types/node': 18.17.12
   '@types/qs': 6.9.8
   '@unocss/reset': 0.46.5
-  '@unocss/transformer-directives': 0.46.5
   '@vitejs/plugin-vue': 3.2.0_vite@3.2.7+vue@3.3.4
   '@vitejs/plugin-vue-jsx': 2.1.1_vite@3.2.7+vue@3.3.4
   '@vue/eslint-config-prettier': 7.0.0_cpz6quqh7houmjwdid5tsorgle
@@ -86,6 +88,12 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.19
     dev: true
+
+  /@ant-design/colors/7.0.0:
+    resolution: {integrity: sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==}
+    dependencies:
+      '@ctrl/tinycolor': 3.6.1
+    dev: false
 
   /@antfu/install-pkg/0.1.1:
     resolution: {integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==}
@@ -403,6 +411,11 @@ packages:
       vue: 3.3.4
     dev: false
 
+  /@ctrl/tinycolor/3.6.1:
+    resolution: {integrity: sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==}
+    engines: {node: '>=10'}
+    dev: false
+
   /@emotion/hash/0.8.0:
     resolution: {integrity: sha512-kBJtf7PH6aWwZ6fka3zQ0p6SBYzx4fl1LoZXE2RrnYST9Xljm7WfKJrU4g/Xr3Beg72MLrp1AWNUmuYJTL7Cow==}
     dev: false
@@ -480,9 +493,14 @@ packages:
       '@iconify/types': 2.0.0
     dev: true
 
+  /@iconify-json/mdi/1.1.54:
+    resolution: {integrity: sha512-3QAsxte90EalbN2e8J30OqSSZz9qN2x+kmykQwsPahoW2dOtSvj+BR9YdiUd9A5XKk2nuU4UH5Gj/cq6WZ6CzQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils/2.1.9:
     resolution: {integrity: sha512-mo+A4n3MwLlWlg1SoSO+Dt6pOPWKElk9sSJ6ZpuzbB9OcjxN8RUWxU3ulPwB1nglErWKRam2x4BAohbYF7FiFA==}

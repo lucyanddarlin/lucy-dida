@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark, useLocalStorage, useToggle } from '@vueuse/core'
 import { darkTheme } from 'naive-ui'
 import { Theme, Themes } from '@/composables/settings/theme'
 
@@ -26,9 +26,12 @@ export const useThemeStore = defineStore('themeStore', () => {
     }
   }
 
+  useLocalStorage('isDark', true)
+
   return {
     isDark,
     currentTheme,
+    currentThemeName,
     toggleDark,
     nativeTheme,
     sideBarWidth,
