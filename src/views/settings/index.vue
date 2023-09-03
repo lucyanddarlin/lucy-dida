@@ -1,62 +1,45 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import { generate } from '@ant-design/colors'
+import { storeToRefs } from 'pinia'
+import { watch } from 'vue'
 import {
-  type GlobalThemeOverrides,
   NButton,
   NCard,
   NCol,
   NColorPicker,
-  NConfigProvider,
   NDivider,
   NForm,
   NFormItem,
   NRow,
   NSpace
 } from 'naive-ui'
-import type { CommonColors } from '@/types'
+import { useThemeStore } from '@/stores'
+import SwitchTheme from '@/components/switchTheme/SwitchTheme.vue'
 
-// 默认主题色
-const primaryColor = ref('#52c41a')
-// 默认 theme-override
-const themeOverride = ref<GlobalThemeOverrides>({})
-// @ant-design-colors 生成的颜色
-const generateColors = ref<string[]>([])
+const { primaryColor, generateColors } = storeToRefs(useThemeStore())
+const { setThemeOverride } = useThemeStore()
 
-/**
- * 根据 primaryColor 生成对应的主题色
- */
-const setThemeOverride = () => {
-  generateColors.value = generate(primaryColor.value)
-  const commonColors: CommonColors = {
-    primaryColor: generateColors.value[5],
-    primaryColorHover: generateColors.value[4],
-    primaryColorSuppl: generateColors.value[4],
-    primaryColorPressed: generateColors.value[6]
-  }
-  themeOverride.value.common = commonColors
-}
-
-setThemeOverride()
-
-// 监听主题色变化
 watch(primaryColor, () => {
   setThemeOverride()
 })
 </script>
 
 <template>
-  <NConfigProvider :theme-overrides="themeOverride">
+  <div class="setting-page w-full h-[calc(100vh-40px)] base-color">
     <NCard>
       <NRow gutter="12">
         <NForm inline>
           <NCol :span="4">
-            <NFormItem label="Primary Color">
+            <NFormItem label="Select Primary Color">
               <NColorPicker v-model:value="primaryColor" :show-alpha="false" />
             </NFormItem>
           </NCol>
         </NForm>
       </NRow>
+      <NSpace>
+        <span class="base-text-color">Light</span>
+        <SwitchTheme />
+        <span class="base-text-color">Dark</span>
+      </NSpace>
       <NDivider />
       <NSpace>
         <NButton>Default</NButton>
@@ -75,5 +58,5 @@ watch(primaryColor, () => {
         {{ color }}
       </div>
     </NCard>
-  </NConfigProvider>
+  </div>
 </template>

@@ -1,5 +1,4 @@
 import Home from '@/views/home/index.vue'
-import Settings from '@/views/settings/index.vue'
 
 import { RouteName } from './constants'
 import type { RouteRecordRaw } from 'vue-router'
@@ -14,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/settings',
     name: RouteName.Settings,
-    component: Settings
+    component: () => import('@/views/settings/index.vue')
   }
 ]
 

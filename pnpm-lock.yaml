@@ -4,11 +4,13 @@ specifiers:
   '@ant-design/colors': ^7.0.0
   '@iconify-json/carbon': ^1.1.20
   '@iconify-json/mdi': ^1.1.54
+  '@iconify-json/ph': ^1.1.6
   '@rushstack/eslint-patch': ^1.1.4
   '@sxzz/eslint-config': ^2.4.4
   '@types/node': ^18.11.9
   '@types/qs': ^6.9.7
   '@unocss/reset': ^0.46.5
+  '@unocss/transformer-directives': ^0.46.5
   '@vitejs/plugin-vue': ^3.0.3
   '@vitejs/plugin-vue-jsx': ^2.0.1
   '@vue/eslint-config-prettier': ^7.0.0
@@ -39,6 +41,8 @@ specifiers:
 dependencies:
   '@ant-design/colors': 7.0.0
   '@iconify-json/mdi': 1.1.54
+  '@iconify-json/ph': 1.1.6
+  '@unocss/transformer-directives': 0.46.5
   '@vue/typescript': 1.8.8_typescript@4.7.4
   axios: 1.5.0
   naive-ui: 2.34.4_vue@3.3.4
@@ -499,6 +503,12 @@ packages:
       '@iconify/types': 2.0.0
     dev: false
 
+  /@iconify-json/ph/1.1.6:
+    resolution: {integrity: sha512-dexzEndlXQX/sbQhnEpA94Pby6JCGV2tZToSGcPPQpbilDGyk5VMd0ymusYoocRAn6+qLpGRvMoz5XFKGqP+VA==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
@@ -932,7 +942,6 @@ packages:
 
   /@unocss/core/0.46.5:
     resolution: {integrity: sha512-apPWISH2ASKySyp4vBAkEzr5XNJDv4mu26eQ4wvg2a32cHRokUsiHLWFNMDe7oJquivTAOHsXqbLQuR9ePKNSg==}
-    dev: true
 
   /@unocss/inspector/0.46.5:
     resolution: {integrity: sha512-L7bMqtp94qtADeGm0ZU1IPtRatChSqHHxFG2s11+VuElPjktcnwnEfTPY5Obm++sy0kNNPU0M3xJD4TPk/M22g==}
@@ -1022,7 +1031,6 @@ packages:
     dependencies:
       '@unocss/core': 0.46.5
       css-tree: 2.3.1
-    dev: true
 
   /@unocss/transformer-variant-group/0.46.5:
     resolution: {integrity: sha512-xBylFf8Q0z0jzr8OoqiIstC2ZXPeniENGANOruTzXlS+DJ2uuKNrwOuXpBbMTEA2D7lmLwtbyg1PZy3mDUB3iA==}
@@ -1758,7 +1766,6 @@ packages:
     dependencies:
       mdn-data: 2.0.30
       source-map-js: 1.0.2
-    dev: true
 
   /cssesc/3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -3247,7 +3254,6 @@ packages:
 
   /mdn-data/2.0.30:
     resolution: {integrity: sha512-GaqWWShW4kv/G9IEucWScBx9G1/vsFZZJUO+tD26M8J8z3Kw5RDQjaoZe03YAClgeS/SWPOcb4nkFBTEi5DUEA==}
-    dev: true
 
   /memorystream/0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
