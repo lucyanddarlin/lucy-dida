@@ -23,7 +23,7 @@ import SwitchTheme from './switchTheme/SwitchTheme.vue'
 <style lang="scss" scoped>
 .app-header {
   .common-icon {
-    @apply mx-2 outline-none text-18px text-#aaa hover:text-black transition duration-300;
+    @apply mx-2 outline-none text-18px text-#aaa hover:text-black dark:hover:text-white transition duration-300;
   }
 }
 </style>

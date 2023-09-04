@@ -4,11 +4,11 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
-import router from './router'
 import './style/override.css'
-;(function setupApp() {
+import { setupRouter } from './router'
+;(async function setupApp() {
   const app = createApp(App).use(createPinia())
-  app.use(router)
+  await setupRouter(app)
   resolveNaiveAndTailWindConflict()
   app.mount('#app')
 })()
