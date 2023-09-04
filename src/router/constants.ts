@@ -1,4 +1,5 @@
 export enum RouteName {
   Home = 'Home',
-  Settings = 'Settings'
+  Settings = 'Settings',
+  Task = 'Task'
 }

@@ -1,10 +1,10 @@
 import { onMounted, onUnmounted, ref } from 'vue'
-import { useIsMac } from '@/composables/settings/misc'
+import { useIsMac } from '@/composables/misc'
 
 // 是否显示 commandModal
 const commandModalVisible = ref<boolean>(false)
 
-export const useCommand = () => {
+export const useCommandModal = () => {
   /**
    * 开启 commandModal
    */

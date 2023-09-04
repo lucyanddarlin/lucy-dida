@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     'prettier/prettier': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'], //未使用变量警告
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     'no-console': 0,
     'no-unused-vars': 0,
     'no-restricted-syntax': 0,

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { NModal } from 'naive-ui'
-import { useCommand } from './commandModal'
+import { useCommandModal } from './commandModal'
 import CommandModalBody from './CommandModelBody.vue'
 
-const { commandModalVisible, registerKeyboardShortcut } = useCommand()
+const { commandModalVisible, registerKeyboardShortcut } = useCommandModal()
 registerKeyboardShortcut()
 </script>
 

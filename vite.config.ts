@@ -1,7 +1,7 @@
 import { URL, fileURLToPath } from 'node:url'
 
 import path from 'node:path'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import Component from 'unplugin-vue-components/vite'
@@ -21,6 +21,9 @@ const pathSrc = path.resolve(__dirname, 'src')
 // https://vitejs.dev/config/
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? './' : '/',
+  test: {
+    environment: 'happy-dom'
+  },
   plugins: [
     vue({ reactivityTransform: true }),
     vueJsx(),

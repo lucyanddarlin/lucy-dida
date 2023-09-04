@@ -3,12 +3,12 @@ import { NDropdown, NPopover } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useThemeStore } from '@/stores'
 import Command from '@/components/Command/CommandModal.vue'
-import { useCommand } from './Command/commandModal'
+import { useCommandModal } from './Command/commandModal'
 import type { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface'
 
 const { primaryColor } = storeToRefs(useThemeStore())
 
-const { openCommandModal } = useCommand()
+const { openCommandModal } = useCommandModal()
 
 const settingOptions: DropdownMixedOption[] = [
   {
