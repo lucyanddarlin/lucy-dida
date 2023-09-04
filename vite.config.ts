@@ -15,6 +15,7 @@ import {
   transformerDirectives,
   transformerVariantGroup
 } from 'unocss'
+import { viteMockServe } from 'vite-plugin-mock'
 
 const pathSrc = path.resolve(__dirname, 'src')
 
@@ -55,8 +56,21 @@ export default defineConfig({
           'bg-gray-100 text-black dark:bg-#18181c dark:text-white transition-colors duration-300',
         'base-text': 'text-#333 dark:text-white'
       }
+    }),
+    viteMockServe({
+      mockPath: './src/mock/source/',
+      enable: true
     })
   ],
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'http://localhost',
+  //       changeOrigin: true,
+  //       rewrite: (path) => path.replace(/^\/api/, '')
+  //     }
+  //   }
+  // },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
