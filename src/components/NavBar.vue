@@ -2,9 +2,13 @@
 import { NDropdown, NPopover } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useThemeStore } from '@/stores'
+import Command from '@/components/Command/CommandModal.vue'
+import { useCommand } from './Command/commandModal'
 import type { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface'
 
 const { primaryColor } = storeToRefs(useThemeStore())
+
+const { openCommandModal } = useCommand()
 
 const settingOptions: DropdownMixedOption[] = [
   {
@@ -54,11 +58,16 @@ const settingOptions: DropdownMixedOption[] = [
       </NPopover>
       <NPopover placement="right">
         <template #trigger>
-          <div class="common-icon" i="carbon-search" />
+          <div
+            class="common-icon"
+            i="carbon-search"
+            @click="openCommandModal"
+          />
         </template>
         <span>搜索面板</span>
       </NPopover>
     </div>
+    <Command />
   </div>
 </template>
 

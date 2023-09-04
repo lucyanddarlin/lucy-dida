@@ -13,6 +13,7 @@
     "@ant-design/colors": "^7.0.0",
     "@iconify-json/mdi": "^1.1.54",
     "@iconify-json/ph": "^1.1.6",
+    "@iconify/vue": "^4.1.1",
     "@unocss/transformer-directives": "^0.46.5",
     "@vue/typescript": "^1.8.8",
     "axios": "^1.1.3",
