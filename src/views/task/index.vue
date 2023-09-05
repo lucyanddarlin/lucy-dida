@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { useTaskLeftMenu } from '@/composables/taskLeftMenu'
+import { useListProjectStore } from '@/stores/listProject'
 import TaskLeftListView from './components/TaskLeftListView.vue'
 
 const { taskLeftMenuVisible, toggleTaskLeftMenu } = useTaskLeftMenu()
+const listProjectStore = useListProjectStore()
+listProjectStore.createProject()
 </script>
 
 <template>

@@ -42,5 +42,13 @@ export default [
         ]
       }
     }
+  },
+  {
+    url: '/api/getAllUser', // 注意，这里只能是string格式
+    method: 'get',
+    response: () => [
+      { id: 1, name: 'lucy' },
+      { id: 2, name: 'darlin' }
+    ]
   }
 ] as MockMethod[]
