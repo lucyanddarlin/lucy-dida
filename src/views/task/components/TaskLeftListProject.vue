@@ -74,7 +74,6 @@ const nodeProps = ({ option }: { option: TreeOption }) => {
     block-line
     expand-on-click
   />
-  {{ showProjectCreateView }}
 </template>
 
 <style>
