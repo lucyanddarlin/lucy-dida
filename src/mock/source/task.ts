@@ -8,19 +8,19 @@ export default [
     response: () => [
       {
         id: 1,
-        name: '清单',
+        name: '节点一',
         createAt: `${Date.now()}`,
         updatedAt: `${Date.now()}`
       },
       {
         id: 2,
-        name: '其他',
+        name: '节点二',
         createAt: `${Date.now()}`,
         updatedAt: `${Date.now()}`
       },
       {
         id: 3,
-        name: '其他2',
+        name: '节点三',
         createAt: `${Date.now()}`,
         updatedAt: `${Date.now()}`
       }
