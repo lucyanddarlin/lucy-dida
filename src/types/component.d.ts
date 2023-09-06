@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     CommandModal: typeof import('./../components/Command/CommandModal.vue')['default']
     CommandModelBody: typeof import('./../components/Command/CommandModelBody.vue')['default']
     NavBar: typeof import('./../components/NavBar.vue')['default']
+    ProjectCreateView: typeof import('./../views/task/components/ProjectCreateView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SettingsBody: typeof import('./../views/settings/components/SettingsBody.vue')['default']

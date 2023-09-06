@@ -74,6 +74,7 @@ const nodeProps = ({ option }: { option: TreeOption }) => {
     block-line
     expand-on-click
   />
+  <ProjectCreateView v-model:show="showProjectCreateView" />
 </template>
 
 <style>

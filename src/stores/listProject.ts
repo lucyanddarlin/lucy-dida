@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { fetchAllTaskProject, fetchCreateProject } from '@/api'
 import { TaskSelectorType } from '@/types/task'
+import { isEmptyString, isNull } from '@/utils'
 import { useTaskSelectorStore } from './taskSelector'
 import type {
   CreateProjectResponse,
@@ -29,6 +30,11 @@ export const useListProjectStore = defineStore('listProject', () => {
     taskSelectorStore.setCurrentSelector(projects.value[0])
   }
 
+  /**
+   * 根据 name 和 id 查找对应的 project
+   * @param projectNameOrId
+   * @returns
+   */
   function findProject(
     projectNameOrId: ListProject['name']
   ): ListProject | undefined {
@@ -64,7 +70,7 @@ export const useListProjectStore = defineStore('listProject', () => {
    * @param name
    */
   async function createProject(name: string): Promise<ListProject | undefined> {
-    if (!name || name === '') {
+    if (isNull(name) || isEmptyString(name)) {
       return
     }
     const project = await fetchCreateProject(name)

@@ -11,19 +11,19 @@ let projectId = 0
 const responseAllProject = (): Array<ProjectResponse> => [
   {
     id: '1',
-    name: '清单',
+    name: '节点一',
     createAt: `${Date.now()}`,
     updatedAt: `${Date.now()}`
   },
   {
     id: '2',
-    name: '其他',
+    name: '节点二',
     createAt: `${Date.now()}`,
     updatedAt: `${Date.now()}`
   },
   {
     id: '3',
-    name: '其他2',
+    name: '节点三',
     createAt: `${Date.now()}`,
     updatedAt: `${Date.now()}`
   }
@@ -86,7 +86,7 @@ describe('list project', () => {
     const projectId = '1'
     listProjectStore.selectProject(projectId)
 
-    expect(taskSelectorStore.currentSelector?.name).toBe('清单')
+    expect(taskSelectorStore.currentSelector?.name).toBe('节点一')
   })
 
   it('should find the target project with projectName', async () => {
@@ -94,7 +94,7 @@ describe('list project', () => {
     const taskSelectorStore = useTaskSelectorStore()
 
     await listProjectStore.init()
-    const projectName = '清单'
+    const projectName = '节点一'
     listProjectStore.selectProject(projectName)
 
     expect(taskSelectorStore.currentSelector?.id).toBe('1')
@@ -104,7 +104,7 @@ describe('list project', () => {
     const listProjectStore = useListProjectStore()
     await listProjectStore.init()
 
-    const existProjectName = '清单'
+    const existProjectName = '节点一'
     const unExistProjectName = 'not_exist'
 
     expect(listProjectStore.checkProjectIsExist(existProjectName)).toBe(true)
