@@ -1,16 +1,24 @@
 <script setup lang="ts">
-import { openGithub } from '@/composables/goto'
+import { openGithub, useGoto } from '@/composables/goto'
 import SwitchTheme from './switchTheme/SwitchTheme.vue'
+
+const { gotoHome, gotoSetting } = useGoto()
 </script>
 
 <template>
   <div
     class="app-header w-full base-color h-40px px-1% flex justify-between items-center text-16px"
   >
-    <div class="cursor-pointer select-none" aria-label="Go Home">Lucy-DiDa</div>
+    <div
+      class="cursor-pointer select-none"
+      aria-label="Go Home"
+      @click="gotoHome"
+    >
+      Lucy-DiDa
+    </div>
     <div class="flex justify-start items-center">
       <SwitchTheme class="mx-2" />
-      <button class="common-icon">
+      <button class="common-icon" @click="gotoSetting">
         <div i="mdi-cog"></div>
       </button>
       <button class="common-icon" @click="openGithub">
