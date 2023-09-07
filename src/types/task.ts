@@ -1,4 +1,4 @@
-import type { SmartProjectName } from "."
+import type { SmartProjectName } from '.'
 
 export enum TaskSelectorType {
   listProject = 'listProject',
@@ -16,4 +16,24 @@ export interface TaskListType {
   icon: string
   title: `${SmartProjectName}`
   option?: string
+}
+
+export interface Task {
+  id: string
+  title: string
+  status: TaskStatus
+  content: string
+  projectId: string
+  position: number
+}
+
+export interface TaskResponse {
+  id: string
+  title: string
+  content: string
+  status: TaskStatus
+  projectId: string
+  position: number
+  createAt: string
+  updatedAt: string
 }

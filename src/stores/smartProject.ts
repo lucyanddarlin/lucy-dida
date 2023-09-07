@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { TaskSelectorType, TaskStatus } from '@/types/task'
 import { type SmartProject, SmartProjectName } from '@/types'
 import { useTaskSelectorStore } from './taskSelector'
-function createSmartProject(name: string, id: string): SmartProject {
+function createSmartProject(id: string, name: string): SmartProject {
   return {
     id,
     name,
@@ -11,10 +11,13 @@ function createSmartProject(name: string, id: string): SmartProject {
 }
 
 export const completeSmartProject = createSmartProject(
-  '1',
+  '11',
   SmartProjectName.Complete
 )
-export const trashSmartProject = createSmartProject('2', SmartProjectName.Trash)
+export const trashSmartProject = createSmartProject(
+  '22',
+  SmartProjectName.Trash
+)
 
 export const useSmartProjectStore = defineStore('smartProject', () => {
   const taskSelectorStore = useTaskSelectorStore()
