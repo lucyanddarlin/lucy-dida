@@ -7,5 +7,6 @@ import TaskLeftListProject from './TaskLeftListProject.vue'
     <div>
       <TaskLeftListProject />
     </div>
+    <TaskLeftListSmartProject />
   </div>
 </template>

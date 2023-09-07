@@ -19,6 +19,7 @@ declare module '@vue/runtime-core' {
     SettingsSidebar: typeof import('./../views/settings/components/SettingsSidebar.vue')['default']
     SwitchTheme: typeof import('./../components/switchTheme/SwitchTheme.vue')['default']
     TaskLeftListProject: typeof import('./../views/task/components/TaskLeftListProject.vue')['default']
+    TaskLeftListSmartProject: typeof import('./../views/task/components/TaskLeftListSmartProject.vue')['default']
     TaskLeftListView: typeof import('./../views/task/components/TaskLeftListView.vue')['default']
     TheHeader: typeof import('./../components/TheHeader.vue')['default']
   }
