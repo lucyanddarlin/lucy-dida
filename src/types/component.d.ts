@@ -21,6 +21,7 @@ declare module '@vue/runtime-core' {
     TaskLeftListProject: typeof import('./../views/task/components/TaskLeftListProject.vue')['default']
     TaskLeftListSmartProject: typeof import('./../views/task/components/TaskLeftListSmartProject.vue')['default']
     TaskLeftListView: typeof import('./../views/task/components/TaskLeftListView.vue')['default']
+    TaskList: typeof import('./../views/task/components/TaskList.vue')['default']
     TheHeader: typeof import('./../components/TheHeader.vue')['default']
   }
 }

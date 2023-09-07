@@ -6,7 +6,7 @@ import { useDrag } from '@/composables/drag'
 import TaskLeftListView from './components/TaskLeftListView.vue'
 import type { Ref } from 'vue'
 
-const { taskLeftMenuVisible, toggleTaskLeftMenu } = useTaskLeftMenu()
+const { taskLeftMenuVisible } = useTaskLeftMenu()
 const listProjectStore = useListProjectStore()
 
 onBeforeMount(async () => {
@@ -30,7 +30,6 @@ function useLeftDrag(el: Ref<HTMLDivElement | undefined>) {
       }
     })
   })
-
   return {
     leftWidthStyle
   }
@@ -77,7 +76,9 @@ const { rightWidthStyle } = useRightDrag(rightResizeElement)
         title="收缩任务栏"
       />
     </template>
-    <div class="flex-1 flex w-full h-full p-24px min-w-300px">task</div>
+    <div class="flex-1 flex w-full h-full p-24px min-w-300px">
+      <TaskList class="w-full" />
+    </div>
     <div
       ref="rightResizeElement"
       class="border-solid cursor-col-resize h-screen border-l-2px opacity-60 hover:opacity-100 transition-opacity duration-300"

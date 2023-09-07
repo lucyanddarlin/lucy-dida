@@ -1,11 +1,13 @@
 import { ref } from 'vue'
 
+const visible = ref<boolean>(true)
 export function useTaskLeftMenu() {
-  const visible = ref<boolean>(true)
-
   function toggle() {
     visible.value = !visible.value
   }
 
-  return { taskLeftMenuVisible: visible, toggleTaskLeftMenu: toggle }
+  return {
+    taskLeftMenuVisible: visible,
+    toggleTaskLeftMenu: toggle
+  }
 }

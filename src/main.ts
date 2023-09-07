@@ -4,6 +4,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
+import 'animate.css'
 import './style/override.css'
 import { setupRouter } from './router'
 ;(async function setupApp() {
