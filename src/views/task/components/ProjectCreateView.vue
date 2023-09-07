@@ -11,7 +11,11 @@ import {
   NSpace
 } from 'naive-ui'
 import { computed, ref } from 'vue'
+import 'vue3-emoji-picker/css'
+import EmojiPicker from 'vue3-emoji-picker'
 import { useListProjectStore } from '@/stores/listProject'
+import { useThemeStore } from '@/stores'
+import { isNull } from '@/utils'
 import { useProjectCreateView } from './projectCreateView'
 
 type Action = 'close' | 'cancel' | 'confirm'
@@ -36,6 +40,7 @@ const modalVisible = computed({
 })
 
 const listProjectStore = useListProjectStore()
+const themeStore = useThemeStore()
 const inputElement = ref<HTMLInputElement>()
 const {
   canSave,
@@ -43,9 +48,15 @@ const {
   formRules,
   popoverVisible,
   isHover,
+  emojiValue,
   handleMouseOver,
-  handleMouseLeave
+  handleMouseLeave,
+  cleanInput,
+  getDefaultEmojiConfig,
+  handleSelectEmoji
 } = useProjectCreateView(inputElement)
+
+const { EMOJI_GROUPS_NAMES, EMOJI_STATIC_TEXTS } = getDefaultEmojiConfig()
 
 /**
  * 处理事件
@@ -53,13 +64,18 @@ const {
  */
 const handleActions = (action: Action) => {
   modalVisible.value = false
+  emits(action)
+  cleanInput()
 }
 
 /**
  * project 保存事件
  */
 const handleSave = () => {
-  const projectName = formValue.value.projectName
+  let projectName = formValue.value.projectName
+  if (!isNull(emojiValue.value)) {
+    projectName = emojiValue.value + projectName
+  }
   listProjectStore.createProject(projectName)
   handleActions('confirm')
 }
@@ -96,11 +112,19 @@ const handleSave = () => {
                   <template #trigger>
                     <NButton text @click="popoverVisible = !popoverVisible">
                       <template #icon>
-                        <Icon icon="fa-solid:smile-wink" />
+                        <span v-if="emojiValue">{{ emojiValue }}</span>
+                        <Icon v-else icon="fa-solid:smile-wink" />
                       </template>
                     </NButton>
                   </template>
-                  <span>emoji picker</span>
+                  <EmojiPicker
+                    picker-type="inputValue"
+                    :native="true"
+                    :theme="themeStore.isDark ? 'dark' : ''"
+                    :group-names="EMOJI_GROUPS_NAMES"
+                    :static-texts="EMOJI_STATIC_TEXTS"
+                    @select="handleSelectEmoji"
+                  />
                 </NPopover>
                 <NButton v-else text>
                   <template #icon>
@@ -123,3 +147,21 @@ const handleSave = () => {
     </NCard>
   </NModal>
 </template>
+
+<style lang="scss" scoped>
+:deep(.v-binder-follower-container) {
+  .n-popover {
+    background-color: transparent;
+  }
+
+  .n-popover:not(.n-popover--raw):not(.n-popover--scrollable):not(
+      .n-popover--show-header-or-footer
+    ) {
+    padding: 0;
+  }
+
+  .n-popover-shared {
+    margin-top: 10px;
+  }
+}
+</style>

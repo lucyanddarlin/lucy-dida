@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CommandModal: typeof import('./../components/Command/CommandModal.vue')['default']
     CommandModelBody: typeof import('./../components/Command/CommandModelBody.vue')['default']
+    EmojiPickerView: typeof import('./../views/task/components/EmojiPickerView.vue')['default']
     NavBar: typeof import('./../components/NavBar.vue')['default']
     ProjectCreateView: typeof import('./../views/task/components/ProjectCreateView.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

@@ -7,6 +7,23 @@ interface FormValue {
   projectName: string
 }
 
+enum SkinStone {
+  NEUTRAL = 'neutral',
+  LIGHT = '1f3fc',
+  LIGHTER = '1f3fb',
+  Medium = '1f3fd',
+  MediumDark = '1f3fe',
+  Deeper = '1f3ff'
+}
+
+interface Emoji {
+  i: string
+  n: string[]
+  r: string // with skin tone
+  t: SkinStone // skin tone
+  u: string // without skin tone
+}
+
 export function useProjectCreateView(
   inputElement: Ref<HTMLInputElement | undefined>
 ) {
@@ -15,9 +32,11 @@ export function useProjectCreateView(
   const canSave = computed<boolean>(
     () => formValue.value.projectName.trim() !== '' && !isDuplicated.value
   )
+  const popoverVisible = ref<boolean>(false)
   const { formValue, formRules } = useForm()
   const { handleMouseOver, handleMouseLeave, isHover } = useMouse()
-  const popoverVisible = ref<boolean>(false)
+  const { cleanInput } = useInput()
+  const { emojiValue, getDefaultEmojiConfig, handleSelectEmoji } = useEmoji()
 
   /**
    * 表单数据和校验规则
@@ -51,7 +70,7 @@ export function useProjectCreateView(
   }
 
   /**
-   *
+   * 鼠标移动事件
    */
   function useMouse() {
     function handleMouseOver() {
@@ -68,13 +87,67 @@ export function useProjectCreateView(
     }
   }
 
+  /**
+   * input 事件
+   */
+  function useInput() {
+    function cleanInput() {
+      formValue.value.projectName = ''
+      emojiValue.value = ''
+    }
+    return {
+      cleanInput
+    }
+  }
+
+  /**
+   * emoji picker 处理 hooks
+   */
+  function useEmoji() {
+    const emojiValue = ref<string>()
+
+    function getDefaultEmojiConfig() {
+      const EMOJI_GROUPS_NAMES = {
+        smileys_people: '人物',
+        animals_nature: '动物 & 自然',
+        food_drink: '食物 & 饮品',
+        activities: '活动',
+        travel_places: '旅行 & 地点',
+        objects: '物体',
+        symbols: '符号',
+        flags: '旗帜'
+      }
+      const EMOJI_STATIC_TEXTS = { placeholder: '搜索', skinTone: '肤色' }
+      return {
+        EMOJI_GROUPS_NAMES,
+        EMOJI_STATIC_TEXTS
+      }
+    }
+
+    function handleSelectEmoji(emoji: Emoji) {
+      emojiValue.value = emoji.i
+      popoverVisible.value = false
+      inputElement.value?.focus()
+    }
+
+    return {
+      emojiValue,
+      getDefaultEmojiConfig,
+      handleSelectEmoji
+    }
+  }
+
   return {
     canSave,
     formValue,
     formRules,
     popoverVisible,
+    isHover,
+    emojiValue,
     handleMouseOver,
     handleMouseLeave,
-    isHover
+    cleanInput,
+    getDefaultEmojiConfig,
+    handleSelectEmoji
   }
 }
