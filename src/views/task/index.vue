@@ -36,8 +36,32 @@ function useLeftDrag(el: Ref<HTMLDivElement | undefined>) {
   }
 }
 
+function useRightDrag(el: Ref<HTMLDivElement | undefined>) {
+  const rightWidth = ref<number>(240)
+  const rightWidthStyle = computed(() => {
+    return `flex: 0 0 ${rightWidth.value}px`
+  })
+
+  onMounted(() => {
+    const x = el.value!.getBoundingClientRect().x || 0
+
+    useDrag({
+      el: el.value!,
+      moveRange: [x - 400, x],
+      onMove(moveDistance) {
+        rightWidth.value -= moveDistance
+      }
+    })
+  })
+  return {
+    rightWidthStyle
+  }
+}
+
 const leftResizeElement = ref<HTMLDivElement>()
+const rightResizeElement = ref<HTMLDivElement>()
 const { leftWidthStyle } = useLeftDrag(leftResizeElement)
+const { rightWidthStyle } = useRightDrag(rightResizeElement)
 </script>
 
 <template>
@@ -53,6 +77,13 @@ const { leftWidthStyle } = useLeftDrag(leftResizeElement)
         title="收缩任务栏"
       />
     </template>
-    task
+    <div class="flex-1 flex w-full h-full p-24px min-w-300px">task</div>
+    <div
+      ref="rightResizeElement"
+      class="border-solid cursor-col-resize h-screen border-l-2px opacity-60 hover:opacity-100 transition-opacity duration-300"
+      style="flex: 0 0 6px"
+      title="收缩任务栏"
+    />
+    <div :style="rightWidthStyle">task edit</div>
   </div>
 </template>
