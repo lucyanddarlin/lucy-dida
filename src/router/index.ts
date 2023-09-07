@@ -4,11 +4,6 @@ import routes from './router'
 import type { App } from 'vue'
 import type { Router } from 'vue-router'
 
-// const router = createRouter({
-//   history: createWebHistory(import.meta.env.BASE_URL),
-//   routes
-// })
-
 export function setupRouterGuard(router: Router) {
   router.beforeEach(() => {
     startLoading()
