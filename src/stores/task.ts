@@ -1,7 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { fetchCreateTask } from '@/api'
-import { type Task, type TaskResponse, TaskSelectorType } from '@/types/task'
+import {
+  type Task,
+  type TaskResponse,
+  TaskSelectorType,
+  TaskStatus
+} from '@/types/task'
 import { useTaskSelectorStore } from './taskSelector'
 
 export const useTaskStore = defineStore('taskStore', () => {
@@ -33,6 +38,28 @@ export const useTaskStore = defineStore('taskStore', () => {
   }
 
   /**
+   * 更新任务标题
+   */
+  function updateTaskTitle(task: Task, newTitle: string) {
+    const oldTitle = task.title
+    if (oldTitle === newTitle) {
+      return
+    }
+    // TODO: fetch update task api
+    task.title = newTitle
+  }
+
+  /**
+   * 完成任务
+   */
+  function completeTask(task: Task) {
+    if (task.status !== TaskStatus.ACTIVE) return
+    // TODO: fetch complete task api
+    _removeTask(task)
+    changeActiveTask(undefined)
+  }
+
+  /**
    * 根据 task 或者 taskId 更新当前的 task
    * @param taskOrTaskId
    */
@@ -48,11 +75,21 @@ export const useTaskStore = defineStore('taskStore', () => {
     currentActiveTask.value = nextTask
   }
 
+  /**
+   * 移除任务
+   */
+  function _removeTask(task: Task) {
+    tasks.value = tasks.value.filter((t) => t.id !== task.id)
+  }
+
   return {
     tasks,
     currentActiveTask,
     addTask,
-    changeActiveTask
+    updateTaskTitle,
+    completeTask,
+    changeActiveTask,
+    _removeTask
   }
 })
 

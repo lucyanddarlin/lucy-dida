@@ -4,10 +4,14 @@ import { computed, ref } from 'vue'
 import { useTaskLeftMenu } from '@/composables/taskLeftMenu'
 import { useTaskSelectorStore } from '@/stores/taskSelector'
 import { TaskSelectorType } from '@/types/task'
+import { useTaskStore } from '@/stores/task'
+import { isEmptyString } from '@/utils'
+import TaskItem from './TaskItem.vue'
 import type { Ref } from 'vue'
 
 const { taskLeftMenuVisible, toggleTaskLeftMenu } = useTaskLeftMenu()
 const taskSelectorStore = useTaskSelectorStore()
+const taskStore = useTaskStore()
 
 function useInput() {
   const inputRef: Ref<HTMLInputElement | null> = ref(null)
@@ -38,6 +42,12 @@ function handleInputChange(e: any) {
 }
 
 const { onFocus, inputRef } = useInput()
+
+function addTask() {
+  if (isEmptyString(taskTitle.value)) return
+  taskStore.addTask(taskTitle.value)
+  taskTitle.value = ''
+}
 </script>
 
 <template>
@@ -63,6 +73,7 @@ const { onFocus, inputRef } = useInput()
         type="text"
         class="w-100% min-w-300px h-38px rounded-6px p-4px pl-12px pr-12px outline-none border-1 b-transparent bg-#eee dark:bg-#3B3B3B transition-colors duration-300"
         @input="handleInputChange"
+        @keypress.enter="addTask"
       />
       <div
         v-show="placeholderVisible"
@@ -76,5 +87,12 @@ const { onFocus, inputRef } = useInput()
         {{ placeholderText }}
       </div>
     </div>
+
+    <TaskItem
+      v-for="(task, key) in taskStore.tasks"
+      :key="key"
+      :task="task"
+      drag-icon-visible
+    />
   </div>
 </template>

@@ -54,12 +54,12 @@ vi.mocked(fetchCreateTask).mockImplementation(
 )
 
 describe('task', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     setActivePinia(createPinia())
-  })
-  it('should add a task', async () => {
     const listProjectStore = useListProjectStore()
     await listProjectStore.init()
+  })
+  it('should add a task', async () => {
     const taskStore = useTaskStore()
     const newTaskTitle = 'new task'
 
@@ -69,9 +69,7 @@ describe('task', () => {
   })
 
   it('should not add a task to the smart project', async () => {
-    const listProjectStore = useListProjectStore()
     const taskSelector = useTaskSelectorStore()
-    await listProjectStore.init()
     taskSelector.setCurrentSelector(completeSmartProject)
 
     const taskStore = useTaskStore()
@@ -79,5 +77,37 @@ describe('task', () => {
     const task = await taskStore.addTask(newTaskTitle)
     expect(task).toEqual(undefined)
     expect(taskStore.currentActiveTask).toEqual(undefined)
+  })
+
+  it('should update the target task', async () => {
+    const taskStore = useTaskStore()
+    const newTaskTitle = 'new task'
+    const updateTaskTitle = 'update task'
+    const task = await taskStore.addTask(newTaskTitle)
+
+    taskStore.updateTaskTitle(task!, updateTaskTitle)
+    expect(task?.title).toBe(updateTaskTitle)
+  })
+
+  it('should remove the target task', async () => {
+    const taskStore = useTaskStore()
+    const task1Title = 'task1'
+    const task = await taskStore.addTask(task1Title)
+
+    expect(taskStore.tasks.length).toBe(1)
+
+    taskStore._removeTask(task!)
+
+    expect(taskStore.tasks.length).toBe(0)
+  })
+
+  it('should complete the target task', async () => {
+    const taskStore = useTaskStore()
+    const task1Title = 'task1'
+    const task = await taskStore.addTask(task1Title)
+
+    taskStore.completeTask(task!)
+
+    expect(taskStore.tasks.length).toBe(0)
   })
 })
