@@ -9,7 +9,7 @@ const taskLeftListStore = useTaskLeftListStore()
 const treeListProjectChildren = ref<Array<TreeOption>>([])
 const showProjectCreateView = ref<boolean>(false)
 
-const selectKey = computed({
+const treeSelectKey = computed({
   get() {
     return [taskLeftListStore.selectKey]
   },
@@ -67,9 +67,9 @@ const nodeProps = ({ option }: { option: TreeOption }) => {
 
 <template>
   <NTree
-    :selected-keys="selectKey"
-    :default-expanded-keys="defaultExpandedKeys"
+    v-model:selected-keys="treeSelectKey"
     :data="data"
+    :default-expanded-keys="defaultExpandedKeys"
     :node-props="nodeProps"
     block-line
     expand-on-click

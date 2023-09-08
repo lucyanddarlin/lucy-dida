@@ -3,6 +3,7 @@ import { Icon } from '@iconify/vue'
 import { computed, ref } from 'vue'
 import { useTaskLeftMenu } from '@/composables/taskLeftMenu'
 import { useTaskSelectorStore } from '@/stores/taskSelector'
+import { TaskSelectorType } from '@/types/task'
 import type { Ref } from 'vue'
 
 const { taskLeftMenuVisible, toggleTaskLeftMenu } = useTaskLeftMenu()
@@ -24,9 +25,13 @@ const taskTitle = ref<string>('')
 const placeholderText = computed<string>(() => {
   return `添加任务至"${taskSelectorStore.currentSelector?.name}", 回车即可保存`
 })
-const isPlaceHolder = computed<boolean>(() => {
+const placeholderVisible = computed<boolean>(() => {
   return taskTitle.value.length === 0
 })
+const taskInputVisible = computed(
+  () =>
+    taskSelectorStore.currentSelector?.type !== TaskSelectorType.smartProject
+)
 
 function handleInputChange(e: any) {
   taskTitle.value = e.target.value
@@ -47,7 +52,11 @@ const { onFocus, inputRef } = useInput()
       />
       <h1 text-4xl ml-5px>{{ taskSelectorStore.currentSelector?.name }}</h1>
     </div>
-    <div class="relative cursor-text" @click="onFocus">
+    <div
+      v-show="taskInputVisible"
+      class="relative cursor-text"
+      @click="onFocus"
+    >
       <input
         ref="inputRef"
         :value="taskTitle"
@@ -56,7 +65,7 @@ const { onFocus, inputRef } = useInput()
         @input="handleInputChange"
       />
       <div
-        v-show="isPlaceHolder"
+        v-show="placeholderVisible"
         class="w-100% min-w-300px h-38px absolute top-0 flex items-center px-4px pl-12px pr-12px border-1 b-transparent select-none color-gray:50"
       >
         <Icon
