@@ -85,6 +85,6 @@ const { rightWidthStyle } = useRightDrag(rightResizeElement)
       style="flex: 0 0 6px"
       title="收缩任务栏"
     />
-    <div :style="rightWidthStyle">task edit</div>
+    <div :style="rightWidthStyle">the detail of the current active task</div>
   </div>
 </template>

@@ -77,7 +77,9 @@ export function useProjectCreateView(
       isHover.value = true
     }
     function handleMouseLeave() {
-      return !popoverVisible.value && (isHover.value = false)
+      return (
+        !popoverVisible.value && !emojiValue.value && (isHover.value = false)
+      )
     }
     const isHover = ref<boolean>(false)
     return {
