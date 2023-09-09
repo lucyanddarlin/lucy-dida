@@ -17,7 +17,7 @@ interface newAxiosInstance extends AxiosInstance {
 }
 
 const http: newAxiosInstance = axios.create({
-  baseURL: 'http://localhost:5173',
+  baseURL: 'http://127.0.0.1:5173',
   timeout: 3 * 1000
   // withCredentials: true,
 })
