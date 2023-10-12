@@ -76,7 +76,7 @@ const { rightWidthStyle } = useRightDrag(rightResizeElement)
         title="收缩任务栏"
       />
     </template>
-    <div class="flex-1 flex w-full h-full p-24px min-w-300px">
+    <div class="flex-1 flex w-full h-full p-24px min-w-300px overflow-y-auto">
       <TaskList class="w-full" />
     </div>
     <div
