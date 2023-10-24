@@ -3,12 +3,15 @@ import { NDropdown, NPopover } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useThemeStore } from '@/stores'
 import Command from '@/components/Command/CommandModal.vue'
+import { useGoto } from '@/composables/goto'
 import { useCommandModal } from './Command/commandModal'
 import type { DropdownMixedOption } from 'naive-ui/es/dropdown/src/interface'
 
 const { primaryColor } = storeToRefs(useThemeStore())
 
 const { openCommandModal } = useCommandModal()
+
+const { goToUserCenter } = useGoto()
 
 const settingOptions: DropdownMixedOption[] = [
   {
@@ -30,7 +33,10 @@ const settingOptions: DropdownMixedOption[] = [
   >
     <NDropdown placement="right-end" :options="settingOptions">
       <!-- avatar -->
-      <div class="w-32px h-32px rounded-sm bg-white mx-auto">
+      <div
+        class="w-32px h-32px rounded-sm bg-white mx-auto cursor-pointer"
+        @click="goToUserCenter"
+      >
         <img src="" alt="" />
       </div>
     </NDropdown>

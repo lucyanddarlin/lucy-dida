@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { NConfigProvider } from 'naive-ui'
 import BaseLayout from '@/layout/BaseLayout.vue'
-import TheHeader from './components/TheHeader.vue'
 import { useThemeStore } from './stores'
 
 const themeStore = useThemeStore()

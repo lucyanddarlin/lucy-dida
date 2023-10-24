@@ -15,9 +15,14 @@ export function useGoto() {
     router.push({ name: RouteName.Settings })
   }
 
+  function goToUserCenter() {
+    router.push({ name: RouteName.Login })
+  }
+
   return {
     gotoHome,
-    gotoSetting
+    gotoSetting,
+    goToUserCenter
   }
 }
 
