@@ -5,7 +5,7 @@ import {
   type Task,
   type TaskResponse,
   TaskSelectorType,
-  TaskStatus
+  TaskStatus,
 } from '@/types/task'
 import { useTaskSelectorStore } from './taskSelector'
 
@@ -89,7 +89,7 @@ export const useTaskStore = defineStore('taskStore', () => {
     updateTaskTitle,
     completeTask,
     changeActiveTask,
-    _removeTask
+    _removeTask,
   }
 })
 
@@ -100,6 +100,6 @@ function mapTaskResponseToTask(rawTask: TaskResponse): Task {
     title: rawTask.title,
     content: rawTask.content,
     status: rawTask.status,
-    position: rawTask.position
+    position: rawTask.position,
   }
 }

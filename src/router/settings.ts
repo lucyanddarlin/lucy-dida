@@ -12,8 +12,8 @@ const subRoutes: Array<RouteRecordRaw> = sidebars.map((sidebar) => ({
   component:
     subSettingPage[`/src/views/settings/Sub/${sidebar.name}/index.vue`],
   meta: {
-    title: sidebar.title
-  }
+    title: sidebar.title,
+  },
 }))
 
 export const SettingsRoute = {
@@ -22,5 +22,5 @@ export const SettingsRoute = {
   name: RouteName.Settings,
   children: subRoutes,
   redirect: subRoutes[0].path,
-  meta: { title: '设置' }
+  meta: { title: '设置' },
 } as RouteRecordRaw

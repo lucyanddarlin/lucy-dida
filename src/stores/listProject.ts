@@ -7,7 +7,7 @@ import { useTaskSelectorStore } from './taskSelector'
 import type {
   CreateProjectResponse,
   ListProject,
-  ProjectResponse
+  ProjectResponse,
 } from '@/types'
 
 export const useListProjectStore = defineStore('listProject', () => {
@@ -24,7 +24,7 @@ export const useListProjectStore = defineStore('listProject', () => {
         ({
           id: `${p.id}`,
           name: p.name,
-          type: TaskSelectorType.listProject
+          type: TaskSelectorType.listProject,
         } as ListProject)
     )
     taskSelectorStore.setCurrentSelector(projects.value[0])
@@ -93,7 +93,7 @@ export const useListProjectStore = defineStore('listProject', () => {
     init,
     createProject,
     selectProject,
-    checkProjectIsExist
+    checkProjectIsExist,
   }
 })
 
@@ -108,6 +108,6 @@ function mapCreateProjectResponseToProject(
   return {
     id: project.id,
     name: project.name,
-    type: TaskSelectorType.listProject
+    type: TaskSelectorType.listProject,
   }
 }

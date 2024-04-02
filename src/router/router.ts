@@ -9,19 +9,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/task',
-    name: RouteName.Home
+    name: RouteName.Home,
   },
   {
     path: '/task',
     name: RouteName.Task,
-    component: Task
+    component: Task,
   },
   {
     path: '/login',
     name: RouteName.Login,
-    component: Login
+    component: Login,
   },
-  SettingsRoute
+  SettingsRoute,
 ]
 
 export default routes

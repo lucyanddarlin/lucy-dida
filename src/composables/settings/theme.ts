@@ -2,7 +2,7 @@ import { getGlobalThemeStore } from '@/stores'
 
 export enum Theme {
   Dark = 'Dark',
-  Light = 'Light'
+  Light = 'Light',
 }
 
 interface ThemeItem {
@@ -17,12 +17,12 @@ export const Themes: Array<ThemeItem> = [
     label: '亮色',
     name: Theme.Light,
     color: '#f3f4f6',
-    handler: () => getGlobalThemeStore().toggleDark(false)
+    handler: () => getGlobalThemeStore().toggleDark(false),
   },
   {
     label: '暗色',
     name: Theme.Dark,
     color: '#18181c',
-    handler: () => getGlobalThemeStore().toggleDark(true)
-  }
+    handler: () => getGlobalThemeStore().toggleDark(true),
+  },
 ]

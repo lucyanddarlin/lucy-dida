@@ -2,13 +2,13 @@ import type { SmartProjectName } from '.'
 
 export enum TaskSelectorType {
   listProject = 'listProject',
-  smartProject = 'smartProject'
+  smartProject = 'smartProject',
 }
 
 export enum TaskStatus {
   ACTIVE = 'active',
   COMPLETE = 'complete',
-  REMOVE = 'remove'
+  REMOVE = 'remove',
 }
 
 export interface TaskListType {

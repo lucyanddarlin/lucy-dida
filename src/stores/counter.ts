@@ -20,6 +20,6 @@ export const useCounterStore = defineStore('counter', () => {
     doubleCount,
     countList,
     incrementCount,
-    pushCount
+    pushCount,
   }
 })

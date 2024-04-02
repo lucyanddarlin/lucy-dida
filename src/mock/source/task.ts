@@ -14,21 +14,21 @@ export default [
         id: 1,
         name: '节点一',
         createAt: `${Date.now()}`,
-        updatedAt: `${Date.now()}`
+        updatedAt: `${Date.now()}`,
       },
       {
         id: 2,
         name: '节点二',
         createAt: `${Date.now()}`,
-        updatedAt: `${Date.now()}`
+        updatedAt: `${Date.now()}`,
       },
       {
         id: 3,
         name: '节点三',
         createAt: `${Date.now()}`,
-        updatedAt: `${Date.now()}`
-      }
-    ]
+        updatedAt: `${Date.now()}`,
+      },
+    ],
   },
   {
     url: '/api/createProject',
@@ -36,9 +36,9 @@ export default [
     response: ({ query }) => {
       return {
         id: `${projectId++}`,
-        name: query.name
+        name: query.name,
       }
-    }
+    },
   },
   {
     url: '/api/createTask',
@@ -52,8 +52,8 @@ export default [
         projectId: query.projectId,
         position: 0,
         createAt: `${Date.now()}`,
-        updatedAt: `${Date.now()}`
+        updatedAt: `${Date.now()}`,
       }
-    }
-  }
+    },
+  },
 ] as MockMethod[]

@@ -6,7 +6,7 @@ import {
   transformerAttributifyJsx,
   transformerCompileClass,
   transformerDirectives,
-  transformerVariantGroup
+  transformerVariantGroup,
 } from 'unocss'
 
 export default {
@@ -15,15 +15,15 @@ export default {
     presetAttributify(),
     presetIcons({
       scale: 1.2,
-      warn: true
+      warn: true,
     }),
-    presetTypography()
+    presetTypography(),
   ],
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
     transformerCompileClass(),
-    transformerAttributifyJsx()
+    transformerAttributifyJsx(),
   ],
   shortcuts: {
     'flex-center': 'flex justify-center items-center',
@@ -31,6 +31,6 @@ export default {
     'li-common': 'cursor-pointer flex justify-between items-center h-7',
     'base-color':
       'bg-gray-100 text-black dark:bg-#18181c dark:text-white transition-colors duration-300',
-    'base-text': 'text-#333 dark:text-white'
-  }
+    'base-text': 'text-#333 dark:text-white',
+  },
 }

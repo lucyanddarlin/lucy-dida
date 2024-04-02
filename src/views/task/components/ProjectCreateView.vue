@@ -8,7 +8,7 @@ import {
   NInput,
   NModal,
   NPopover,
-  NSpace
+  NSpace,
 } from 'naive-ui'
 import { computed, ref } from 'vue'
 import 'vue3-emoji-picker/css'
@@ -21,14 +21,14 @@ import { useProjectCreateView } from './projectCreateView'
 type Action = 'close' | 'cancel' | 'confirm'
 
 const props = defineProps({
-  show: { type: Boolean }
+  show: { type: Boolean },
 })
 const emits = defineEmits([
   'update:show',
   'close',
   'closed',
   'cancel',
-  'confirm'
+  'confirm',
 ])
 const modalVisible = computed({
   get() {
@@ -36,7 +36,7 @@ const modalVisible = computed({
   },
   set(val) {
     emits('update:show', val)
-  }
+  },
 })
 
 const listProjectStore = useListProjectStore()
@@ -53,7 +53,7 @@ const {
   handleMouseLeave,
   cleanInput,
   getDefaultEmojiConfig,
-  handleSelectEmoji
+  handleSelectEmoji,
 } = useProjectCreateView(inputElement)
 
 const { EMOJI_GROUPS_NAMES, EMOJI_STATIC_TEXTS } = getDefaultEmojiConfig()

@@ -21,7 +21,7 @@ function useInput() {
   }
   return {
     inputRef,
-    onFocus
+    onFocus,
   }
 }
 

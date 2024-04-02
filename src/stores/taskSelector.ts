@@ -10,6 +10,6 @@ export const useTaskSelectorStore = defineStore('taskSelector', () => {
   }
   return {
     currentSelector,
-    setCurrentSelector
+    setCurrentSelector,
   }
 })

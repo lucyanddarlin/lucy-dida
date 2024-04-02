@@ -9,7 +9,7 @@ export interface ProjectResponse {
 
 export enum SmartProjectName {
   Complete = '已完成',
-  Trash = '废纸篓'
+  Trash = '废纸篓',
 }
 
 interface CommonProject {

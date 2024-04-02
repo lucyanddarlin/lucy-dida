@@ -54,7 +54,7 @@ export const useThemeStore = defineStore('themeStore', () => {
       primaryColor: generateColors.value[5],
       primaryColorHover: generateColors.value[4],
       primaryColorSuppl: generateColors.value[4],
-      primaryColorPressed: generateColors.value[6]
+      primaryColorPressed: generateColors.value[6],
     }
     themeOverride.value.common = commonColors
     themeOverride.value.Button = {
@@ -62,7 +62,7 @@ export const useThemeStore = defineStore('themeStore', () => {
       textColorHoverPrimary: '#fff',
       textColorPressedPrimary: '#fff',
       textColorFocusPrimary: '#fff',
-      textColorDisabledPrimary: '#fff'
+      textColorDisabledPrimary: '#fff',
     }
   }
 
@@ -80,7 +80,7 @@ export const useThemeStore = defineStore('themeStore', () => {
     sideBarWidth,
     taskLeftViewPadding,
     changeTheme,
-    setThemeOverride
+    setThemeOverride,
   }
 })
 

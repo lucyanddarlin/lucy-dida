@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import {
   hideSmartProject,
-  smartProjects
+  smartProjects,
 } from '@/composables/settings/smartProject'
 import { useSettingStore } from '../settings'
 

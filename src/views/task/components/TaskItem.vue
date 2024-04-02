@@ -16,7 +16,7 @@ const taskStore = useTaskStore()
 const checkBoxColors: Record<TaskStatus, string> = {
   [TaskStatus.ACTIVE]: 'bg-transparent',
   [TaskStatus.COMPLETE]: 'bg-#007A78',
-  [TaskStatus.REMOVE]: 'bg-#ccc'
+  [TaskStatus.REMOVE]: 'bg-#ccc',
 }
 const taskEditRef: Ref<HTMLDivElement | undefined> = ref()
 

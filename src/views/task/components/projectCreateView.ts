@@ -13,7 +13,7 @@ enum SkinStone {
   LIGHTER = '1f3fb',
   Medium = '1f3fd',
   MediumDark = '1f3fe',
-  Deeper = '1f3ff'
+  Deeper = '1f3ff',
 }
 
 interface Emoji {
@@ -44,7 +44,7 @@ export function useProjectCreateView(
    */
   function useForm() {
     const formValue = ref<FormValue>({
-      projectName: ''
+      projectName: '',
     })
     const formRules: FormRules = {
       projectName: {
@@ -60,12 +60,12 @@ export function useProjectCreateView(
             }
           })
         },
-        trigger: ['input', 'blur']
-      }
+        trigger: ['input', 'blur'],
+      },
     }
     return {
       formValue,
-      formRules
+      formRules,
     }
   }
 
@@ -85,7 +85,7 @@ export function useProjectCreateView(
     return {
       isHover,
       handleMouseOver,
-      handleMouseLeave
+      handleMouseLeave,
     }
   }
 
@@ -98,7 +98,7 @@ export function useProjectCreateView(
       emojiValue.value = ''
     }
     return {
-      cleanInput
+      cleanInput,
     }
   }
 
@@ -117,12 +117,12 @@ export function useProjectCreateView(
         travel_places: '旅行 & 地点',
         objects: '物体',
         symbols: '符号',
-        flags: '旗帜'
+        flags: '旗帜',
       }
       const EMOJI_STATIC_TEXTS = { placeholder: '搜索', skinTone: '肤色' }
       return {
         EMOJI_GROUPS_NAMES,
-        EMOJI_STATIC_TEXTS
+        EMOJI_STATIC_TEXTS,
       }
     }
 
@@ -135,7 +135,7 @@ export function useProjectCreateView(
     return {
       emojiValue,
       getDefaultEmojiConfig,
-      handleSelectEmoji
+      handleSelectEmoji,
     }
   }
 
@@ -150,6 +150,6 @@ export function useProjectCreateView(
     handleMouseLeave,
     cleanInput,
     getDefaultEmojiConfig,
-    handleSelectEmoji
+    handleSelectEmoji,
   }
 }

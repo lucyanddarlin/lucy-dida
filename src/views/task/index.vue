@@ -27,11 +27,11 @@ function useLeftDrag(el: Ref<HTMLDivElement | undefined>) {
       moveRange: [x - 50, x + 150],
       onMove(moveDistance) {
         leftWidth.value += moveDistance
-      }
+      },
     })
   })
   return {
-    leftWidthStyle
+    leftWidthStyle,
   }
 }
 
@@ -49,11 +49,11 @@ function useRightDrag(el: Ref<HTMLDivElement | undefined>) {
       moveRange: [x - 400, x],
       onMove(moveDistance) {
         rightWidth.value -= moveDistance
-      }
+      },
     })
   })
   return {
-    rightWidthStyle
+    rightWidthStyle,
   }
 }
 

@@ -22,7 +22,7 @@ export function useGoto() {
   return {
     gotoHome,
     gotoSetting,
-    goToUserCenter
+    goToUserCenter,
   }
 }
 

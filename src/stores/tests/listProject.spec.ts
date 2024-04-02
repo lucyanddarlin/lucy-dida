@@ -13,20 +13,20 @@ const responseAllProject = (): Array<ProjectResponse> => [
     id: '1',
     name: '节点一',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
+    updatedAt: `${Date.now()}`,
   },
   {
     id: '2',
     name: '节点二',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
+    updatedAt: `${Date.now()}`,
   },
   {
     id: '3',
     name: '节点三',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
-  }
+    updatedAt: `${Date.now()}`,
+  },
 ]
 
 const responseNewProject = (name: string): CreateProjectResponse => {
@@ -34,7 +34,7 @@ const responseNewProject = (name: string): CreateProjectResponse => {
     id: `${projectId++}`,
     name,
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
+    updatedAt: `${Date.now()}`,
   }
 }
 

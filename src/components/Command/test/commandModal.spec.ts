@@ -36,7 +36,7 @@ describe('command modal', () => {
 
     fireEvent.keydown({
       key: 'k',
-      metaKey: true
+      metaKey: true,
     })
 
     expect(commandModalVisible.value).toBe(true)
@@ -54,7 +54,7 @@ describe('command modal', () => {
 
     fireEvent.keydown({
       key: 'k',
-      ctrlKey: true
+      ctrlKey: true,
     })
 
     expect(commandModalVisible.value).toBe(true)

@@ -48,6 +48,6 @@ export const useCommandModal = () => {
     commandModalVisible,
     openCommandModal,
     closeCommandModal,
-    registerKeyboardShortcut
+    registerKeyboardShortcut,
   }
 }

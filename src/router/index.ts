@@ -18,7 +18,7 @@ let router: Router
 export const setupRouter = async (app: App) => {
   router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
-    routes
+    routes,
   })
   setupRouterGuard(router)
   app.use(router)

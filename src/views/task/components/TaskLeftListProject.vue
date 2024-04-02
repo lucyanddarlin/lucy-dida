@@ -15,7 +15,7 @@ const treeSelectKey = computed({
   },
   set(val) {
     taskLeftListStore.selectKey = val[0]
-  }
+  },
 })
 
 const defaultExpandedKeys = [taskLeftListStore.listProjectRootNode.name]
@@ -31,7 +31,7 @@ const createRootNodeSuffix = (onclick: (e: Event) => void) => {
       width: '20',
       class:
         'opacity-0 rounded-1 hover:bg-gray-2 transition-opacity duration-300',
-      onclick
+      onclick,
     })
 }
 
@@ -40,7 +40,7 @@ watchEffect(() => {
     taskLeftListStore.listProjectChildrenNodes.map((p) => ({
       key: p.name,
       label: p.name,
-      isLeaf: true
+      isLeaf: true,
     }))
 })
 
@@ -54,13 +54,13 @@ const data = ref<Array<any>>([
     suffix: createRootNodeSuffix((e: Event) => {
       e.stopPropagation()
       showProjectCreateView.value = true
-    })
-  }
+    }),
+  },
 ])
 
 const nodeProps = ({ option }: { option: TreeOption }) => {
   return {
-    class: option.placeholder ? 'placeholder' : ''
+    class: option.placeholder ? 'placeholder' : '',
   }
 }
 </script>

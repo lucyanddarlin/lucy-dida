@@ -6,7 +6,7 @@ function createSmartProject(id: string, name: string): SmartProject {
   return {
     id,
     name,
-    type: TaskSelectorType.smartProject
+    type: TaskSelectorType.smartProject,
   }
 }
 
@@ -31,7 +31,7 @@ export const useSmartProjectStore = defineStore('smartProject', () => {
   }
 
   return {
-    selectProject
+    selectProject,
   }
 })
 
@@ -48,6 +48,6 @@ export function loadSmartProjectTask(projectName: SmartProjectName) {
   // TODO: fetch all task
 
   return {
-    status
+    status,
   }
 }

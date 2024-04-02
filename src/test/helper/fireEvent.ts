@@ -8,5 +8,5 @@ export const fireEvent: FireEvent = {
   keydown(options: KeyboardEventInit) {
     const event = new KeyboardEvent('keydown', options)
     window.dispatchEvent(event)
-  }
+  },
 }

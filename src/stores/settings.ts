@@ -3,7 +3,7 @@ import { computed, reactive } from 'vue'
 import {
   SmartProjectOptionValue,
   hideSmartProject,
-  smartProjects
+  smartProjects,
 } from '@/composables/settings/smartProject'
 
 export const useSettingStore = defineStore('settingStore', () => {
@@ -17,6 +17,6 @@ export const useSettingStore = defineStore('settingStore', () => {
   return {
     settingsSmartProjects,
     visibleSmartProjects,
-    hideSmartProject
+    hideSmartProject,
   }
 })

@@ -2,12 +2,12 @@ import { mount } from '@vue/test-utils'
 export function useSetup<T>(setup: () => T) {
   const comp = {
     setup,
-    render() {}
+    render() {},
   }
 
   const wrapper = mount(comp)
   return {
-    wrapper
+    wrapper,
     // router: wrapper.router
   }
 }

@@ -14,19 +14,19 @@ export default [
               {
                 id: '11',
                 title: '南',
-                path: '/user/nan'
+                path: '/user/nan',
               },
               {
                 id: '12',
                 title: '小',
-                path: '/user/xiao'
+                path: '/user/xiao',
               },
               {
                 id: '13',
                 title: '辰',
-                path: '/user/chen'
-              }
-            ]
+                path: '/user/chen',
+              },
+            ],
           },
           {
             id: '2',
@@ -35,20 +35,20 @@ export default [
               {
                 id: '21',
                 title: '玩游戏',
-                path: '/user/play'
-              }
-            ]
-          }
-        ]
+                path: '/user/play',
+              },
+            ],
+          },
+        ],
       }
-    }
+    },
   },
   {
     url: '/api/getAllUser', // 注意，这里只能是string格式
     method: 'get',
     response: () => [
       { id: 1, name: 'lucy' },
-      { id: 2, name: 'darlin' }
-    ]
-  }
+      { id: 2, name: 'darlin' },
+    ],
+  },
 ] as MockMethod[]

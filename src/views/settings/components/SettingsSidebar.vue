@@ -12,7 +12,7 @@ const options: MenuOption[] = sidebars.map((sidebar) => ({
       { to: `/settings${sidebar.path}` },
       { default: () => sidebar.title }
     ),
-  key: sidebar.path.slice(1)
+  key: sidebar.path.slice(1),
 }))
 
 const route = useRoute()

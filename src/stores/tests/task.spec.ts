@@ -16,20 +16,20 @@ const responseAllProject = (): Array<ProjectResponse> => [
     id: '1',
     name: '节点一',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
+    updatedAt: `${Date.now()}`,
   },
   {
     id: '2',
     name: '节点二',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
+    updatedAt: `${Date.now()}`,
   },
   {
     id: '3',
     name: '节点三',
     createAt: `${Date.now()}`,
-    updatedAt: `${Date.now()}`
-  }
+    updatedAt: `${Date.now()}`,
+  },
 ]
 
 const responseNewTask = (title: string, projectId: string): TaskResponse => ({
@@ -40,7 +40,7 @@ const responseNewTask = (title: string, projectId: string): TaskResponse => ({
   projectId,
   position: 0,
   createAt: `${Date.now()}`,
-  updatedAt: `${Date.now()}`
+  updatedAt: `${Date.now()}`,
 })
 
 vi.mocked(fetchAllTaskProject).mockImplementation(async () => {

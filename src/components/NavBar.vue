@@ -20,9 +20,9 @@ const settingOptions: DropdownMixedOption[] = [
     props: {
       onClick: () => {
         console.log('settings label')
-      }
-    }
-  }
+      },
+    },
+  },
 ]
 </script>
 

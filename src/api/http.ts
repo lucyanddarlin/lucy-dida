@@ -5,7 +5,7 @@ import type {
   AxiosInterceptorManager,
   AxiosPromise,
   AxiosRequestConfig,
-  AxiosResponse
+  AxiosResponse,
 } from 'axios'
 
 interface newAxiosInstance extends AxiosInstance {
@@ -18,7 +18,7 @@ interface newAxiosInstance extends AxiosInstance {
 
 const http: newAxiosInstance = axios.create({
   baseURL: 'http://127.0.0.1:5173',
-  timeout: 3 * 1000
+  timeout: 3 * 1000,
   // withCredentials: true,
 })
 
@@ -27,7 +27,7 @@ http.interceptors.request.use(
     config.params = { ...config.params }
     config.headers = {
       ...config.headers,
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
     }
     return config
   },

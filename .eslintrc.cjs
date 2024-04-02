@@ -8,13 +8,12 @@ module.exports = {
     'eslint:recommended',
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier',
-    '@sxzz'
+    '@sxzz',
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
   },
   rules: {
-    'prettier/prettier': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'], //未使用变量警告
     'no-empty-function': 'off',
     '@typescript-eslint/no-empty-function': 'off',
@@ -28,9 +27,9 @@ module.exports = {
         html: {
           void: 'never',
           normal: 'any',
-          component: 'any'
-        }
-      }
-    ]
-  }
+          component: 'any',
+        },
+      },
+    ],
+  },
 }

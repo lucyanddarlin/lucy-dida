@@ -13,7 +13,7 @@ import {
   presetTypography,
   presetUno,
   transformerDirectives,
-  transformerVariantGroup
+  transformerVariantGroup,
 } from 'unocss'
 import { viteMockServe } from 'vite-plugin-mock'
 
@@ -23,25 +23,25 @@ const pathSrc = path.resolve(__dirname, 'src')
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? './' : '/',
   test: {
-    environment: 'happy-dom'
+    environment: 'happy-dom',
   },
   plugins: [
     vue({ reactivityTransform: true }),
     vueJsx(),
     Component({
       dirs: ['src/components', 'src/**/components'],
-      dts: path.resolve(pathSrc, 'types/component.d.ts')
+      dts: path.resolve(pathSrc, 'types/component.d.ts'),
     }),
     AutoImport({
       imports: ['vue', 'vue-router', '@vueuse/core'],
       dirs: [path.resolve(pathSrc, 'composable')],
-      dts: path.resolve(pathSrc, 'types/component.d.ts')
+      dts: path.resolve(pathSrc, 'types/component.d.ts'),
     }),
     Unocss(),
     viteMockServe({
       mockPath: './src/mock/source/',
-      enable: true
-    })
+      enable: true,
+    }),
   ],
   // server: {
   //   proxy: {
@@ -54,7 +54,7 @@ export default defineConfig({
   // },
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })

@@ -22,7 +22,7 @@ function useProjectMoreActions() {
   return {
     showMoreIconIndex,
     showWitchPopover,
-    openPopover
+    openPopover,
   }
 }
 

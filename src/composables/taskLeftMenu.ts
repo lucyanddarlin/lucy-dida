@@ -8,6 +8,6 @@ export function useTaskLeftMenu() {
 
   return {
     taskLeftMenuVisible: visible,
-    toggleTaskLeftMenu: toggle
+    toggleTaskLeftMenu: toggle,
   }
 }

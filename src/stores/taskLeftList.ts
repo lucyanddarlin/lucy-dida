@@ -10,7 +10,7 @@ interface Node {
 export const useTaskLeftListStore = defineStore('taskLeftList', () => {
   const listProjectStore = useListProjectStore()
   const listProjectRootNode: Node = {
-    name: '清单'
+    name: '清单',
   }
 
   const selectKey = ref<string>('')
@@ -20,7 +20,7 @@ export const useTaskLeftListStore = defineStore('taskLeftList', () => {
   watchEffect(() => {
     listProjectChildrenNodes.value = listProjectStore.projects.map((p) => {
       return {
-        name: p.name
+        name: p.name,
       }
     })
   })
@@ -58,6 +58,6 @@ export const useTaskLeftListStore = defineStore('taskLeftList', () => {
   return {
     selectKey,
     listProjectRootNode,
-    listProjectChildrenNodes
+    listProjectChildrenNodes,
   }
 })

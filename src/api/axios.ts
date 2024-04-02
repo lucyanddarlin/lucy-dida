@@ -7,7 +7,7 @@ export default <T = any>(obj: AxiosRequestConfig) => {
       url: obj.url,
       data: obj.data || {},
       method: obj.method || 'GET',
-      responseType: obj.responseType || 'json'
+      responseType: obj.responseType || 'json',
     })
       .then((res) => {
         resolve(res.data)
