@@ -7,16 +7,17 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Component from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
-import { viteMockServe } from 'vite-plugin-mock'
 
 const pathSrc = path.resolve(__dirname, 'src')
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? './' : '/',
   test: {
     environment: 'happy-dom',
+    setupFiles: './vitest.setup.ts',
+    maxConcurrency: 0,
   },
+  base: process.env.NODE_ENV === 'production' ? './' : '/',
   plugins: [
     vue({ reactivityTransform: true }),
     vueJsx(),
@@ -30,10 +31,6 @@ export default defineConfig({
       dts: path.resolve(pathSrc, 'types/component.d.ts'),
     }),
     Unocss(),
-    viteMockServe({
-      mockPath: './src/mock/source/',
-      enable: true,
-    }),
   ],
   server: {
     proxy: {
