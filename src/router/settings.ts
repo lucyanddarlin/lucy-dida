@@ -19,7 +19,7 @@ const subRoutes: Array<RouteRecordRaw> = sidebars.map((sidebar) => ({
 export const SettingsRoute = {
   path: `/${SETTINGS_PATH}`,
   component: Settings,
-  name: RouteName.Settings,
+  name: RouteName.SETTINGS,
   children: subRoutes,
   redirect: subRoutes[0].path,
   meta: { title: '设置' },

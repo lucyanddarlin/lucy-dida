@@ -7,14 +7,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import Component from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
-import {
-  presetAttributify,
-  presetIcons,
-  presetTypography,
-  presetUno,
-  transformerDirectives,
-  transformerVariantGroup,
-} from 'unocss'
 import { viteMockServe } from 'vite-plugin-mock'
 
 const pathSrc = path.resolve(__dirname, 'src')
@@ -43,6 +35,15 @@ export default defineConfig({
       enable: true,
     }),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
   // server: {
   //   proxy: {
   //     '/api': {

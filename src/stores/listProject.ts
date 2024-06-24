@@ -1,14 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { fetchAllTaskProject, fetchCreateProject } from '@/api'
+import { fetchAllProjects, fetchCreateProject } from '@/api'
 import { TaskSelectorType } from '@/types/task'
 import { isEmptyString, isNull } from '@/utils'
 import { useTaskSelectorStore } from './taskSelector'
-import type {
-  CreateProjectResponse,
-  ListProject,
-  ProjectResponse,
-} from '@/types'
+import type { ListProject, ProjectResponse } from '@/types'
 
 export const useListProjectStore = defineStore('listProject', () => {
   const taskSelectorStore = useTaskSelectorStore()
@@ -18,11 +14,11 @@ export const useListProjectStore = defineStore('listProject', () => {
    * 初始化 project list
    */
   async function init() {
-    const rawsProjects: Array<ProjectResponse> = await fetchAllTaskProject()
+    const rawsProjects: Array<ProjectResponse> = await fetchAllProjects()
     projects.value = rawsProjects.map(
       (p) =>
         ({
-          id: `${p.id}`,
+          id: `${p._id}`,
           name: p.name,
           type: TaskSelectorType.listProject,
         } as ListProject)
@@ -103,10 +99,10 @@ export const useListProjectStore = defineStore('listProject', () => {
  * @returns
  */
 function mapCreateProjectResponseToProject(
-  project: CreateProjectResponse
+  project: ProjectResponse
 ): ListProject {
   return {
-    id: project.id,
+    id: project._id,
     name: project.name,
     type: TaskSelectorType.listProject,
   }

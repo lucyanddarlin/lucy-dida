@@ -7,8 +7,8 @@ export enum TaskSelectorType {
 
 export enum TaskStatus {
   ACTIVE = 'active',
-  COMPLETE = 'complete',
-  REMOVE = 'remove',
+  COMPLETED = 'complete',
+  REMOVED = 'remove',
 }
 
 export interface TaskListType {

@@ -15,8 +15,8 @@ const taskStore = useTaskStore()
 
 const checkBoxColors: Record<TaskStatus, string> = {
   [TaskStatus.ACTIVE]: 'bg-transparent',
-  [TaskStatus.COMPLETE]: 'bg-#007A78',
-  [TaskStatus.REMOVE]: 'bg-#ccc',
+  [TaskStatus.COMPLETED]: 'bg-#007A78',
+  [TaskStatus.REMOVED]: 'bg-#ccc',
 }
 const taskEditRef: Ref<HTMLDivElement | undefined> = ref()
 
@@ -41,7 +41,7 @@ function handleClickItem(task: Task) {
       class="flex-1 flex justify-start items-center gap-5px h-40px py-5px pl-10px rounded-6px dark:hover:bg-[#474747]/50 hover:bg-[#ECF1FF]/90 transition-colors duration-300"
       :class="[taskStore.currentActiveTask?.id === task.id ? 'activeTask' : '']"
     >
-      <template v-if="task.status === TaskStatus.REMOVE">
+      <template v-if="task.status === TaskStatus.REMOVED">
         <!-- 临时 废纸篓 提示 -->
         <div class="flex justify-start items-center gap-5px">
           <NPopover trigger="hover">

@@ -1,48 +1,40 @@
 import axios from 'axios'
+import { checkHaveToken, getToken } from '@/utils'
+import { goToLogin } from '@/composables/goto'
+import { messageError, messageRedirectToSignIn } from '@/composables/message'
+import type { AxiosInstance, AxiosResponse } from 'axios'
 
-import type {
-  AxiosInstance,
-  AxiosInterceptorManager,
-  AxiosPromise,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from 'axios'
-
-interface newAxiosInstance extends AxiosInstance {
-  <T = any>(config: AxiosRequestConfig): AxiosPromise<T>
-  interceptors: {
-    request: AxiosInterceptorManager<AxiosRequestConfig>
-    response: AxiosInterceptorManager<AxiosResponse<any>>
-  }
-}
-
-const http: newAxiosInstance = axios.create({
-  baseURL: 'http://127.0.0.1:5173',
-  timeout: 3 * 1000,
-  // withCredentials: true,
+export const http: AxiosInstance = axios.create({
+  baseURL: '/api',
+  timeout: 10000,
+  headers: { 'Content-Type': 'application/json' },
 })
 
-http.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
-    config.params = { ...config.params }
-    config.headers = {
-      ...config.headers,
-      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-    }
-    return config
-  },
-  (error) => {
-    return Promise.reject(error)
-  }
-)
+http.interceptors.request.use((config) => {
+  if (checkHaveToken()) config.headers!.Authorization = `Bearer ${getToken()}`
+
+  return config
+})
 
 http.interceptors.response.use(
-  (response) => {
-    return response
+  (response: AxiosResponse) => {
+    const { code, message, data } = response.data
+
+    if (code === 0) {
+      return data
+    } else {
+      messageError(message)
+      return Promise.reject(new Error(message))
+    }
   },
-  (err) => {
-    return Promise.reject(err)
+  (error) => {
+    if (error.response.status) {
+      switch (error.response.status) {
+        case 401:
+          messageRedirectToSignIn(goToLogin)
+          break
+      }
+      return Promise.reject(error)
+    }
   }
 )
-
-export default http

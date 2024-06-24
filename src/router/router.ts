@@ -9,16 +9,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     redirect: '/task',
-    name: RouteName.Home,
+    name: RouteName.HOME,
   },
   {
     path: '/task',
-    name: RouteName.Task,
+    name: RouteName.TASK,
+    meta: {
+      requiresAuth: true,
+    },
     component: Task,
   },
   {
     path: '/login',
-    name: RouteName.Login,
+    name: RouteName.LOGIN,
     component: Login,
   },
   SettingsRoute,

@@ -1,12 +1,5 @@
 import type { TaskSelectorType } from './task'
 
-export interface ProjectResponse {
-  id: string
-  name: string
-  createAt: string
-  updatedAt: string
-}
-
 export enum SmartProjectName {
   Complete = '已完成',
   Trash = '废纸篓',
@@ -26,10 +19,3 @@ export interface SmartProject extends CommonProject {
 }
 
 export type TaskSelector = ListProject | SmartProject
-
-export interface CreateProjectResponse {
-  id: string
-  name: string
-  createAt: string
-  updatedAt: string
-}

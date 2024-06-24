@@ -1,7 +1,25 @@
-import axios from './axios'
+import { http } from './http'
+import type { UserResponse } from '@/types'
 
-export const fetchTest = () =>
-  axios({
-    url: '/api/getAllUser',
-    method: 'GET',
+export function fetchSignIn(username: string, password: string) {
+  return http.post<UserResponse, UserResponse>('/users/signin', {
+    username,
+    password,
   })
+}
+
+export function fetchSignUp({
+  username,
+  password,
+  confirmPassword,
+}: {
+  username: string
+  password: string
+  confirmPassword: string
+}) {
+  return http.post<UserResponse, UserResponse>('/users/signup', {
+    username,
+    password,
+    confirmPassword,
+  })
+}

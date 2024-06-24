@@ -43,8 +43,8 @@ export const useSmartProjectStore = defineStore('smartProject', () => {
 export function loadSmartProjectTask(projectName: SmartProjectName) {
   const status =
     projectName === SmartProjectName.Complete
-      ? TaskStatus.COMPLETE
-      : TaskStatus.REMOVE
+      ? TaskStatus.COMPLETED
+      : TaskStatus.REMOVED
   // TODO: fetch all task
 
   return {
